@@ -43,7 +43,7 @@ Make sure the NestJS backend is running on http://localhost:3000.
 This app relies on the backend API from the proa-api repo. It must be running and seeded with weather station and measurement data.
 
 ## Project Structure
-.
+~~~
 ├── src/
 │   ├── app/
 │   │   ├── components/
@@ -53,3 +53,4 @@ This app relies on the backend API from the proa-api repo. It must be running an
 ├── public/
 ├── styles/
 ├── README.md
+~~~
