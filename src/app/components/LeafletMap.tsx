@@ -12,6 +12,13 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
+interface Measurement {
+  long_name: string;
+  unit: string;
+  value: number;
+  timestamp: string;
+}
+
 interface WeatherStation {
   id: number;
   ws_name: string;
@@ -20,6 +27,7 @@ interface WeatherStation {
   state: string;
   latitude: number;
   longitude: number;
+  latestMeasurements: Measurement[];
 }
 
 export default function LeafletMap({
@@ -44,11 +52,28 @@ export default function LeafletMap({
             position={[station.latitude, station.longitude]}
           >
             <Popup>
-              <strong>{station.ws_name}</strong>
+              <strong>Station: {station.ws_name}</strong>
               <br />
-              {station.site}
+              Site: {station.site}
               <br />
-              {station.portfolio}
+              Portfolio: {station.portfolio}
+              <br />
+              <br />
+              <hr />
+              <br />
+              <strong>Measurements:</strong>
+              <ul style={{ padding: 0, listStyle: "none" }}>
+                {station.latestMeasurements?.map((m: any, i: number) => (
+                  <>
+                    <li key={i}>
+                      {m.long_name}: {m.value} {m.unit}
+                      <br />
+                      {new Date(m.timestamp).toLocaleString()}
+                    </li>
+                    <br />
+                  </>
+                ))}
+              </ul>
             </Popup>
           </Marker>
         ))
