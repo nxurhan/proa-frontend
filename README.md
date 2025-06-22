@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Proa Weather Map Frontend
+
+This is the frontend application for the Proa coding challenge. It displays weather stations on an interactive map of Australia using **React**, **Next.js**, and **Leaflet**.
+
+## Features
+
+- Display weather stations as map markers
+- View station details including:
+  - Name, site, and portfolio
+  - Latest measurement values with units and timestamps
+- Filter stations by Australian state
+- Dynamically updates visible markers based on map viewport
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org/)
+- [React 18](https://reactjs.org/)
+- [React Leaflet](https://react-leaflet.js.org/)
+- [Leaflet](https://leafletjs.com/)
+- CSS modules
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Clone the repository
+```
+git clone https://github.com/nxurhan/proa-frontend.git
+cd proa-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+###2. Install dependencies
+```
+npm install
+```
+### 3. Run the development server
+```
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your browser at http://localhost:3001
+Make sure the NestJS backend is running on http://localhost:3000.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Dependency
+This app relies on the backend API from the proa-api repo. It must be running and seeded with weather station and measurement data.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+.
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── LeafletMap.tsx
+│   │   │   └── MapClient.tsx
+│   │   └── page.tsx
+├── public/
+├── styles/
+├── README.md
