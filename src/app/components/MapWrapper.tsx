@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import LeafletMap from "./LeafletMap";
+import StateSelect from "./Select";
 
 interface WeatherStation {
   id: number;
@@ -50,26 +51,11 @@ export default function MapClient() {
           borderRight: "1px solid #ccc",
         }}
       >
-        <h2>Filters:</h2>
-        <br />
-        <h3>Filter by State</h3>
-        <select
-          value={selectedState}
-          onChange={(e) => setSelectedState(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            marginBottom: "1rem",
-            color: "black",
-            border: "1px solid",
-          }}
-        >
-          {states.map((state) => (
-            <option key={state} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
+        <StateSelect
+          selected={selectedState}
+          onChange={setSelectedState}
+          options={states}
+        />
       </aside>
 
       <main style={{ flex: 1 }}>
