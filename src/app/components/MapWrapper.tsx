@@ -27,16 +27,17 @@ export default function MapClient() {
   const [selectedState, setSelectedState] = useState<string>("ALL");
 
   useEffect(() => {
-    const url =
-      selectedState === "ALL"
-        ? "http://localhost:3000/weather-stations"
-        : `http://localhost:3000/weather-stations/by-state?state=${selectedState}`;
+    const url = `http://localhost:3000/weather-stations/by-state?state=${selectedState.toUpperCase()}`;
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(`Stations for ${selectedState}:`, data);
         setStations(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching stations:", err);
+        setStations([]);
       });
   }, [selectedState]);
 
